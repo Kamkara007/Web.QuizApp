@@ -1,5 +1,5 @@
 
-<%= render "homepage/feeds/navbars/navbars" %>
+<%= render "home/feeds/navbars/navbars" %>
 
 <div id="<%= dom_id @course %>" class="mt-2 pt-20" >
   <!-- onglet title -->
@@ -11,13 +11,13 @@
           <%= avatar_user %>
           <div>
             <div class="font-bold flex ml-2">
-              <%= @course.team.full_name %> 
+              <%= @course.user.full_name %> 
               <%= heroicon 'star', options: { class: "pl-6 text-blue-600" }  %>
             </div>
             <div class="text-sm opacity-50 ml-2">
-              Professeur de <%= link_to root_path do %> <%= @course.team.city_name %> <% end %>
+              Professeur de <%= link_to root_path do %> <%= @course.material.title %> <% end %>
               <%#= @course.writer.school %> 
-              <%= @course.team.city_name %>
+              <%#= @course.user.city_name %>
             </div>
           </div>
         </div>
@@ -41,10 +41,10 @@
       <!-- add course Stats -->
       <div class="flex justify-between text-xs md:text-sm ptl-2 p">
         <div class="flex">
-          <p class="ml-4  text-sm"> <%= @course.essentials.count %> </p>
+          <p class="ml-4  text-sm"> <%#= @course.essentials.count %> </p>
         </div>
         <div class="flex text-md mr-10">
-          <p class=""> <%= @course.exercices.count %> </p>
+          <p class=""> <%#= @course.exercices.count %> </p>
         </div>
       </div> 
       <hr>
@@ -72,7 +72,7 @@
 
 
   <%= turbo_frame_tag "essentials" do %>
-    <%= render "courses/shared/essentials" %>
+    <%#= render "courses/shared/essentials" %>
   <% end %>
   <div class="pt-2">
   <hr>

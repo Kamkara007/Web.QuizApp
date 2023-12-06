@@ -5,7 +5,7 @@ class Course < ApplicationRecord
   belongs_to :material
   belongs_to :level
   has_many :essentials, dependent: :destroy
-  has_many :exercices, dependent: :destroy
+  has_many :quizzes, dependent: :destroy
  
   ############# ACTION TEXT ##############
   has_rich_text :content

@@ -1,0 +1,43 @@
+<%= form_with(model:[@course, @quiz], local: true, data: { 
+  controller: "nested-form", 
+  nested_form_wrapper_selector_value: ".nested-form-wrapper" }) do |form| %>
+
+  <% if quiz.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+
+      <ul>
+        <% quiz.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+   
+    <%= form.text_field :title,
+        placeholder:"Titre de exercice ...",
+        autofocus:true,
+        class: "ln-text-field ln-text-field-focus" %>
+  </div>
+  <div class="my-5">
+    <%= form.rich_text_area :content,
+    placeholder:"Contenu de exercice ...",
+     class: "ln-text-field ln-text-field-focus" %>
+  </div>
+ 
+  
+
+  <div data-nested-form-target="target"></div>
+  <div class="flex justify-end font-bold mt-8 mb-4">
+    <button type="button" data-action="nested-form#add" class="bg-green-500 ln-btn-action">
+      Ajouter Question
+    </button>
+  </div>
+  
+   <div class="flex" >
+    <%= form.submit "Enregistrez", class:"ln-btn ln-btn-create" %>
+    <%= link_to "Annuler", course_path(@course), class:"ml-4 ln-btn ln-btn-alert bg-black " %>
+  </div>
+<% end %>

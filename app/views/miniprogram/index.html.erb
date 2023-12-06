@@ -1,0 +1,25 @@
+<% @title="Mini-Program" %>
+<!-- Navbar Items -->
+<%= render "home/feeds/navbars/navbars" %>
+<div class="container md:mx-auto mt-20">
+    <div class="flex flex-wrap md:flex-row flex-col">
+        <!-- Left side -->
+        <div class="w-full md:w-1/4 md:px-6 md:pt-4 border">
+            <div class="py-2">
+                <%= render "mini-sidebar" %>
+            </div>
+            
+        </div>
+
+        <!-- Contents && Feed -->
+        <div class="w-full md:w-2/4 md:p-2">
+            <div class="py-2">
+                <%= render "miniprogram/programs/top_creators" %>
+            </div>
+            <div class="">
+                <%= render "content" %> voir plus sur le Creator program
+            </div>
+        </div>
+
+    </div>
+</div>

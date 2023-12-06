@@ -6,3 +6,24 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+
+// Add Notifications 
+import Notification from 'stimulus-notification'
+application.register('notification', Notification)
+
+// Password visibility
+import PasswordVisibility from 'stimulus-password-visibility'
+application.register('password-visibility', PasswordVisibility)
+
+// readMore
+import ReadMore from 'stimulus-read-more'
+application.register('read-more', ReadMore)
+
+// Nestedform
+import NestedForm from 'stimulus-rails-nested-form'
+application.register('nested-form', NestedForm)
+
+// Dropdown
+import Dropdown from 'stimulus-dropdown'
+application.register('dropdown', Dropdown)

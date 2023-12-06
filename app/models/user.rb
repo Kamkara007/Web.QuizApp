@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+         has_many :levels
+         has_many :materials
+         has_many :courses
+         has_many :quizzes
   ############# CONCERNs ##################
   include  UserCustomFieldsConcern
   include SignUpConcern

@@ -14,16 +14,16 @@
               <div class="avatar">
                 <div class="mask mask-squircle w-8 h-8">
                   
-                  <%= image_tag(feed_course.team.avatar, alt: "photo de l'auteur") %>
+                  <%#= image_tag(feed_course.team.avatar, alt: "photo de l'auteur") %>
                 </div>
               </div>
               <div>
                 <div class="font-bold flex">
-                  <%= feed_course.team.full_name %>
+                  <%= feed_course.user.full_name %>
                   <%= heroicon 'star', options: { class: "pl-6 text-blue-600" } %>
                 </div>
                 <div class="text-sm opacity-50">
-                  Professeur de <%#= feed_course.team.material %>, <%#= feed_course.team.school %>, <%= feed_course.team.city_name %>
+                  Professeur de <%= feed_course.material.title %>, <%#= feed_course.team.school %>, <%#= feed_course.team.city_name %>
                 </div>
               </div>
             </div>
@@ -58,7 +58,7 @@
         <!-- add course Stats -->
         <div class="flex justify-between text-xs md:text-sm ptl-2 p">
           <div class="flex">
-            <p class="ml-4 text-sm"> <%= feed_course.essentials.count %> </p>
+            <p class="ml-4 text-sm"> <%#= feed_course.essentials.count %> </p>
           </div>
 
           <div class="flex text-md mr-10">
