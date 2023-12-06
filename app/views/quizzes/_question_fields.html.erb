@@ -1,0 +1,29 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+  <div class="card mb-4">
+    <div class="border p-2 bg-white">
+      <%= f.label :content, "Question", class:"" %>
+      <%= f.rich_text_area :content,
+        placeholder:"contenu de la question",
+        class: "ln-text-field ln-text-field-focus" %>
+      
+      <% 1.upto(4) do |answer_index| %>
+      <div class=" ">
+      
+        <%= f.label "answer#{answer_index}", "Reponse #{answer_index}" %>
+        <%= f.rich_text_area "answer#{answer_index}", 
+              placeholder:"contenu de la reponse #{answer_index}",
+              class: "ln-text-field ln-text-field-focus" %>
+      </div>
+      <% end %>
+
+      <%= f.label :correct_answer, "Bonne réponse" %>
+      <%= f.select :correct_answer, (1..3).to_a, {}, class: "ln-text-field ln-text-field-focus" %>
+
+      <div class="flex justify-end font-bold pt-1">
+      <button type="button" data-action="nested-form#remove", class="bg-red-600 ln-btn-action">Supprimer Question</button>
+      <%= f.hidden_field :_destroy %>
+      
+      </div>
+    </div>
+  </div>
+</div>

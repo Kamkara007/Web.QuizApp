@@ -1,10 +1,53 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @quiz %>
+<div class="bg-base-200 h-screen">
+  <%= render "home/feeds/navbars/navbars" %>
+  <div class="mx-auto md:w-2/3 w-full pt-20 ">
+ 
+    <div class="mx-auto border p-4 bg-white">
+     <h2 class="flex justify-center font-bold my-4 "><%= @quiz.title %></h2>
+      
+      <div class="">
+        <%= @quiz.content %>
+      </div>
 
-<div>
-  <%= link_to "Edit this quiz", edit_quiz_path(@quiz) %> |
-  <%= link_to "Back to quizzes", quizzes_path %>
+      <%= form_with(url: quiz_submissions_path(@quiz), local: true, method: :post) do |form| %>
+          <% @quiz.questions.each_with_index do |question, index| %>
+            <div class="border rounded-md my-1 my-2">
+              <div class="m-2">
+                <h2 class="py-2">Question <%= index + 1 %>:</h2>
 
-  <%= button_to "Destroy this quiz", @quiz, method: :delete %>
+                <p class=""><%= question.content %></p>
+                
+                <% 1.upto(4) do |answer_index| %>
+                  <div class="flex py-1">
+                    <%= form.radio_button "question_#{question.id}", answer_index,
+                    class: "flex" %>
+
+                    <%= form.label "question_#{question.id}_#{answer_index}",
+                      question.send("answer#{answer_index}"),
+                        class: "flex border ln-text-field mx-2" %>
+                  </div>
+                <% end %>
+
+              </div>
+            </div>
+          <% end %>
+          <div class="text-center">
+            <%= form.submit "Enregistrez", class:"ln-btn ln-btn-create" %>
+          </div>
+      <% end %>
+
+      <div>
+        <%= link_to "Edit this exercice", edit_quiz_path(@quiz) %> |
+        <%= link_to "Back to exercice", quizzes_path %>
+        <%= button_to "Destroy this exercice", @quiz, method: :delete %>
+      </div>
+
+    </div>
+  </div>
 </div>
+
+
+
+
+

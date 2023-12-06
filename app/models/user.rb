@@ -8,6 +8,7 @@ class User < ApplicationRecord
          has_many :materials
          has_many :courses
          has_many :quizzes
+         has_many :quiz_submissions
   ############# CONCERNs ##################
   include  UserCustomFieldsConcern
   include SignUpConcern

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Quiz submissions</h1>
+
+<div id="quiz_submissions">
+  <% @quiz_submissions.each do |quiz_submission| %>
+    <%= render quiz_submission %>
+    <p>
+      <%= link_to "Show this quiz submission", quiz_submission %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New quiz submission", new_quiz_submission_path %>

@@ -27,7 +27,17 @@
      class: "ln-text-field ln-text-field-focus" %>
   </div>
  
-  
+  <template data-nested-form-target="template">
+    <%= form.fields_for :questions, Question.new,
+        child_index: "NEW_RECORD" do |question_fields| %>
+
+      <%= render "question_fields", f: question_fields %>
+    <% end %>
+  </template>
+
+  <%= form.fields_for :questions do |question_fields| %>
+    <%= render "question_fields", f: question_fields %>
+  <% end %>
 
   <div data-nested-form-target="target"></div>
   <div class="flex justify-end font-bold mt-8 mb-4">

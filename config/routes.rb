@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  
  
   ################## MATERIALS  ##########################
   get "materials", to:"materials#index"
@@ -22,7 +24,10 @@ Rails.application.routes.draw do
     resources :quizzes, only:[:new, :create]
    end
 
-   resources :quizzes, except:[:new, :create]
+   resources :quizzes, except:[:new, :create] do
+    resources :questions
+    resources :quiz_submissions, only:[:create, :show], as: "submissions"
+   end
    
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

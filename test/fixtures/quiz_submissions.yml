@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_answers: 
+  score: 1.5
+  user: one
+  quiz: one
+
+two:
+  user_answers: 
+  score: 1.5
+  user: two
+  quiz: two
