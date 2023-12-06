@@ -1,0 +1,15 @@
+  <% if send("current_#{current_user_is}").avatar.attached? %>
+    <div class="avatar placeholder  ">
+        <div class=" bg-neutral-focus text-neutral-content rounded-full w-16 md:w-24 ">
+            <span class="text-3xl"> <%=  image_tag(send("current_#{current_user_is}").avatar, alt:"Photo de profil") %> </span>
+        </div>
+    </div> 
+  <% else %>
+    <% member_avatar = "#{[send("current_#{current_user_is}").first_name.first, send("current_#{current_user_is}").last_name.first].join('')}"  %>
+
+    <div class="avatar placeholder  ">
+        <div class=" bg-neutral-focus text-neutral-content rounded-full w-16 md:w-24 ">
+            <span class="text-3xl"> <%= member_avatar %> </span>
+        </div>
+    </div> 
+<% end %>
