@@ -1,0 +1,20 @@
+<div class="md:hidden fixed inset-x-0 bottom-0 bg-base-200">
+    <nav class=" flex justify-around text-black" >
+        <%= link_to root_path, class:"w-1/4", data:{turbo_frame: "_top"} do %>
+            <span class="flex justify-center mx-auto"> <%= heroicon "home" %></span> 
+            <span class=" ml-4 text-xs">Accueil</span>
+        <% end %>
+        <%= link_to 'classroom', class:"w-1/4", data:{turbo_frame: "_top"} do %> 
+            <span class="flex justify-center"> <%= heroicon "user-group" %></span> 
+            <span class="ml-4 text-xs">Classe</span> 
+        <% end %>
+        <%= link_to "new-course", class:"w-1/4", data:{turbo_frame: "_top"} do %> 
+            <span class="mx-auto text-lg"> <%= heroicon "plus-circle" %> </span> 
+        <% end %>
+        <%= link_to 'mini-programs', class:"w-1/4", data:{turbo_frame: "_top"} do %> 
+            <span class="flex justify-center mx-auto"> <%= heroicon "squares-2x2" %></span> 
+            <span class="text-xs">Mini-Program</span> 
+        <% end %>
+        
+    </nav>
+</div>

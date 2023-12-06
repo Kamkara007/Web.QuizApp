@@ -1,0 +1,7 @@
+<div class="mx-auto md:w-2/3 w-full">
+   <%= link_to sanitize("&larr; Back to materials"), materials_path %>
+  <%= turbo_frame_tag @material do %>
+  <%= render "form", material: @material %>
+  <% end %>
+ 
+</div>

@@ -1,0 +1,55 @@
+<%= render "homepage/feeds/navbars/navbars" %>
+
+<div class="container md:mx-auto pt-20">
+    <div class="bg-gray-100 px-1 md:p-8 flex justify-between">
+        <!-- Left Side bar -->
+        <div class=" hidden md:block md:w-1/5 md:ml-10">
+            <div class="w-full py-2">
+              <%= render "homepage/feeds/contents/content/user_profil" %>
+            </div>
+            <div class="w-full py-2 card bg-white border">
+                <%= render "homepage/feeds/contents/materials/side_material" %>
+            </div>
+        </div>
+        
+        <!-- Contents && Feed -->
+        <div class=" w-full md:w-3/5 md:mx-4 md:p-2 ">
+        <!-- Contents && Feed -->
+        
+        <div class="py-2">
+        <!-- Afficher les material dulevel pour les eleves et les level pour les enseignants -->
+        <% if current_user_is == "student" %>
+          <div class="">
+                <%= render "homepage/feeds/contents/materials/top_material" %>
+                <%= render "homepage/feeds/contents/content/course" %>
+            </div>
+        <% else %>
+           
+          <div class="">
+                <%= render "homepage/feeds/contents/levels/top_level" %>
+                <%= render "homepage/feeds/contents/content/course" %>
+            </div>
+         
+        <% end %>
+        </div>
+        
+
+        <div class="">
+            <%#= render "homepage/feed/navbar/mobile_bottom_navbar" %>
+        </div>
+        </div>
+
+        <!-- User Profil-->
+        <div class="hidden md:block md:w-1/5 md:mr-10">
+            <div class="py-2">
+                <%= render "homepage/feeds/schools/school" %>
+            </div>
+            <div class="py-2">
+                <%= render "homepage/feeds/legals/legal" %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- mobile bottom navbar -->
+<%= render "homepage/feeds/navbars/mb_navbar" %>

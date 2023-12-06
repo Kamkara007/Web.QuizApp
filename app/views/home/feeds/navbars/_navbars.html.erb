@@ -1,0 +1,51 @@
+<div class="fixed inset-x-0 top-0 z-50 h-0.5 mt-0.5 bg-blue-600"></div>
+
+<div class=" navbar bg-white fixed top-0 left-0 right-0 z-10">
+    <div class="hidden md:block navbar-start">
+        <%# company logo %>
+        <%= link_to root_path, class:"btn btn-ghost font-bold normal-case text-xl md:ml-10" do %>
+            <p class="block px- mt-2 bg-white rounded-lg  md:mt-0">
+                <span class="text-white bg-blue-600 "> <span class="">L</span><span class="-ml-1">n</span></span>
+                <span class="text-black -ml-1">class</span>
+            </p>
+        <% end %>
+    </div>
+    <%# navbar items %>
+    <div class="hidden md:block navbar-center lg:flex">
+        <ul class="menu menu-horizontal px-1 font-bold text-md">
+            <li>
+                <%= link_to root_path, data:{turbo_frame: "_top"} do %>
+                <%= heroicon "home" %>
+                Accueil
+                 <% end %>
+            </li>
+
+            <li>
+                <%= link_to "classrooms" , data:{turbo_frame: "_top"} do %> <%= heroicon "user-group" %> Classe <% end %>
+            </li>
+            <li class="mx-4">
+                <%= link_to "new-course", data:{turbo_frame: "_top"} do %> <%= heroicon "folder-plus" %> Création <% end %>
+            </li>
+            <li>
+                <%= link_to "miniprograms", class:"", data:{turbo_frame: "_top"} do %> <%= heroicon "squares-2x2" %> Mini-program <% end %>
+            </li>            
+
+            <div class="avatar ml-4">
+                <%= link_to  root_path, data:{turbo_frame: "_top"} do %>
+                   <%= avatar_user %>
+                <% end %>
+            </div>
+        </ul>
+    </div>
+    <div class="hidden md:block navbar-end">
+        <ul>
+            <li class="flex">
+            
+                <%= link_to destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, class:"flex py-2 px-4 font-semibold bg-white rounded-lg  md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" do %>
+               <%#= heroicon "pwer" %> Déconnecter
+                <% end %>
+            </li>
+        </ul>
+    </div>
+    <%= render "home/feeds/navbars/mtop_navbar" %>
+</div>

@@ -77,3 +77,5 @@ end
 gem "friendly_id", "~> 5.5"
 
 gem "devise", "~> 4.9"
+
+gem "heroicon", "~> 1.0"

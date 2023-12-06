@@ -1,0 +1,68 @@
+
+<%= render "homepage/feed/navbar/navbars" %>
+
+<div id="<%= dom_id @course %>" >
+    <div class="mx-auto md:w-2/3 w-full pt-20">
+        <!-- onglet title -->
+        <% @title= @course.title %>
+
+        <div class="border rounded-md bg-white p-2">
+            <div class="flex justify-between space-x-3 p-2">
+                <div class="flex">           
+                    <div class="avatar ">
+                        <div class="mask mask-squircle w-8 h-8">
+                            <%= image_tag("avatar/profile.png", alt:"Avatar Tailwind CSS Component") %>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-bold flex ml-2"><%= @course.user.full_name %> <%= heroicon 'star', options: { class: "pl-6 text-blue-600" }  %>  </div>
+                        <div class="text-sm opacity-50 ml-2">Professeur de Mathematique <%#= @course.user.school_name %> <%= @course.user.city_name %></div>
+                    </div>
+                </div>
+                <div data-controller="dropdown" class="relative">
+      <button type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+        <%= heroicon 'ellipsis-horizontal', options:{class:'font-bold'} %>
+      </button>
+
+      <div data-dropdown-target="menu"
+        class="hidden transition transform origin-top-right absolute right-0"
+        data-transition-enter-from="opacity-0 scale-95"
+        data-transition-enter-to="opacity-100 scale-100"
+        data-transition-leave-from="opacity-100 scale-100"
+        data-transition-leave-to="opacity-0 scale-95"
+      >
+        <div class="py-1">
+          <%= link_to  edit_course_path(@course), class: "bg-blue-600 text-white rounded px-2 py-1 flex " do %>
+          <!-- SVG for Edit -->
+          <%= heroicon "pencil-square" %> Amél. Cours
+          <% end %>
+        </div> 
+        <div class="py-1">
+                   
+          
+        </div> 
+      </div>
+    </div>
+            </div>
+
+            <!-- course title -->
+            <h1 class="font-bold text-xl md:text-2xl mb-4"> <%= @course.title %> </h1>
+            <!-- course content -->
+            <div data-controller="read-more" data-read-more-more-text-value="Read more" class="p-2 pb-4 text-sm" >
+                <div class="show-content" data-read-more-target="content" class="flex">
+                    <%= @course.content %>
+                </div>
+                <button data-action="read-more#toggle" class="flex text-blue-500 underline">Voir plus <%= heroicon "arrow-long-right", options:{class:"flex"} %></button>
+            </div>
+            <%= image_tag @course.course_image.variant(resize_to_limit: [300, 1600]) if @course.course_image.attached? %>
+
+            <!-- Course Stat-->
+            <%= render "/homepage/feed/stats" %>
+        <div> 
+    <div>                      
+<hr>
+<%= render "courses/shared/resumes" %>
+<div class="pt-2">
+<hr>
+<%= render "courses/shared/exercices" %>
+</div>

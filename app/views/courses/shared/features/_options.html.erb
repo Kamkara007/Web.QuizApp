@@ -1,0 +1,33 @@
+<div data-controller="dropdown" class="relative">
+                  <button type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+                    <%= heroicon 'squares-plus', options:{class:'rounded-md font-bold border'} %>
+                  </button>
+
+                  <div data-dropdown-target="menu"
+                    class="hidden transition transform origin-top-right absolute right-0 bg-gray-100 px-2"
+                    data-transition-enter-from="opacity-0 scale-95"
+                    data-transition-enter-to="opacity-100 scale-100"
+                    data-transition-leave-from="opacity-100 scale-100"
+                    data-transition-leave-to="opacity-0 scale-95" >
+                    
+                    <div class="py-1">
+                      <%= link_to  edit_course_path(@course), class: "ln-btn-option" do %>
+                      <!-- SVG for Edit -->
+                      <%= heroicon "pencil-square", options:{class:"text-sm"} %> Modifier
+                      <% end %>
+                    </div> 
+                    <div class="py-1">
+                      <%= link_to new_course_essential_path(@course),  class:"ln-btn-option" do %>
+                        <%= heroicon 'book-open', options:{class:"text-sm"} %> Essentielles
+                      <% end %>
+                    </div> 
+
+                    <!-- Quiz exercices -->
+                    <div class="py-1">
+                      <%= link_to new_course_exercice_path(@course), class:"ln-btn-option" do %>
+                        <%= heroicon "book-open", options:{class:"text-sm"} %> Exercice
+                      <% end %>
+                    </div>
+                    
+                  </div>
+                </div>

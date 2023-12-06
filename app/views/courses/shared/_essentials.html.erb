@@ -1,0 +1,62 @@
+<h2 class="flex justify-center font-bold mt-8 mb-4">Essentielddle de la léçon :</h2>
+  <% @course.essentials.each do |essential| %>
+           
+    <div class="card my-4 border rounded">
+      <!-- Author -->
+      <div class="flex justify-between space-x-3 p-2">
+        <div class="flex">
+          <%= avatar_user %>
+        <div>
+          <div class="font-bold flex ml-2"><%= essential.team.full_name %> <%= heroicon 'star', options: { class: "pl-6 text-blue-600" }  %>  </div>
+          <div class="text-sm opacity-50 ml-2">
+            Professeur de Mathematique 
+            <%#= essential.teacher.school_name %> 
+            <%= essential.team.city_name %>
+          </div>
+        </div>
+      </div>
+      <!-- options -->
+      <div data-controller="dropdown" class="relative">
+        <button type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+          <%= heroicon 'ellipsis-horizontal', options:{class:'font-bold'} %>
+        </button>
+
+        <div data-dropdown-target="menu"
+          class="hidden transition transform origin-top-right absolute right-0"
+          data-transition-enter-from="opacity-0 scale-95"
+          data-transition-enter-to="opacity-100 scale-100"
+          data-transition-leave-from="opacity-100 scale-100"
+          data-transition-leave-to="opacity-0 scale-95">
+          <div class="py-1">
+            <%= link_to  edit_essential_path(essential), class: "bg-blue-600 text-white rounded px-2 py-1 flex " do %>
+            <!-- SVG for Edit -->
+            <%= heroicon "pencil-square" %> Modifier
+            <% end %>
+          </div> 
+          <div class="py-1">
+                    
+            <%= link_to essential_path(essential), method: :delete, 
+              data: { confirm: "Êtes-vous sûr de vouloir supprimer ce résumé ?" },
+              class: "bg-red-600 text-white rounded px-2 py-1 flex" do %>
+              <%= heroicon "trash" %> Supprimer
+            <% end %>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <div class="p-2">
+      <h2 class="font-semibold text-sm md:text-md"> <%= essential.title %></h2>
+    </div>
+
+    <div data-controller="read-more" data-read-more-more-text-value="Read more" class="p-2 pb-4 text-sm" >
+      <div class="show-content" data-read-more-target="content" class="flex">
+        <%= essential.content %>
+      </div>
+      <button data-action="read-more#toggle" class="flex text-blue-500 underline">Voir plus <%= heroicon "arrow-long-right", options:{class:"flex"} %></button>
+    </div>
+    
+  </div>
+<% end %>
+
+
+

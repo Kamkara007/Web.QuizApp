@@ -1,0 +1,12 @@
+
+<div class="flex space-x-4">
+  <!-- Élément 1 -->
+    <% @feed_materials.each do |fm| %>
+        <div class=" flex items-center px-2 py-3 bg-white rounded-md">
+            <div class="flex md:w-full  ">
+                <%= link_to fm.title, fm, data:{ turbo_frame: "_top" }, class:"no-underline font-semibold text-black" %>
+            </div>
+        </div>
+    <% end %>
+    <%= heroicon "arrow-long-right", options:{class:"flex"} %>
+</div>

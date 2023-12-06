@@ -1,18 +1,10 @@
-  <% if send("current_#{current_user_is}").avatar.attached? %>
-    <figcaption class="flex items-center space-x-4">
-        <div class="w-8 rounded-full">
-            <%=  image_tag(send("current_#{current_user_is}").avatar, alt:"Photo de profil", class:"flex-none w-8 h-8 rounded-full object-cover", loading:"lazy", decoding:"async") %>
-        </div>
-        
-        
-    </figcaption>     
-  <% else %>
-    <% member_avatar = "#{[send("current_#{current_user_is}").first_name.first, send("current_#{current_user_is}").last_name.first].join('')}"  %>
-    <div class="w-8 rounded-full">
-        <p class="flex h-8 w-8 rounded-full bg-gray-300 font-bold text-black mx-auto uppercase text-sm">
-            <span class="flex justify-center mx-auto  "><%= member_avatar %></span>
-        </p>
-    </div>
-<% end %>
+ 
+<% member_avatar = "#{[send("current_user").first_name.first, send("current_user").last_name.first].join('')}"  %>
+<div class="w-8 rounded-full">
+    <p class="flex h-8 w-8 rounded-full bg-gray-300 font-bold text-black mx-auto uppercase text-sm">
+        <span class="flex justify-center mx-auto  "><%= member_avatar %></span>
+    </p>
+</div>
+
 
 

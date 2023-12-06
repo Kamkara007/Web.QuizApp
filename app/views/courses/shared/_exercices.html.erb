@@ -1,0 +1,53 @@
+<h2 class="flex justify-center font-bold mt-8 mb-4">Exercices :</h2>
+  <% @course.exercices.each do |exercice| %>
+           
+    <div class="card my-4 border rounded">
+
+      <div class="flex justify-between space-x-3 p-2">
+        <div class="flex">
+          <%= avatar_user %>
+          <div>
+            <div class="font-bold flex ml-2">
+              <%= exercice.team.full_name %> 
+              <%= heroicon 'star', options: { class: "pl-6 text-blue-600" }  %>
+            </div>
+            <div class="text-sm opacity-50 ml-2">
+              Professeur de Mathematique 
+              <%= link_to root_path do %>
+              <%= exercice.team.city_name %> <% end %>
+            </div>
+          </div>
+        </div>
+      <div class="">
+        <%= heroicon 'ellipsis-horizontal' %>
+      </div>
+    </div>
+    <div class="p-2">
+      <h2 class="font-semibold text-sm md:text-md">
+        <%= link_to  exercice_path(exercice),
+          data:{turbo_frame: '_top'},
+          class:"hover:text-blue-600 hover:underline" do %>
+            <%= exercice.title %>
+        <% end %>
+    </div>
+
+    <div data-controller="read-more" data-read-more-more-text-value="Read more" class="p-2 pb-4 text-sm" >
+      <div class="show-content" data-read-more-target="content" class="flex">
+        <%= exercice.content %>
+      </div>
+      <button data-action="read-more#toggle" class="flex text-blue-500 underline">Voir plus <%= heroicon "arrow-long-right", options:{class:"flex"} %></button>
+    </div>
+    <div class="actions flex justify-between p-2">
+      <%= link_to  edit_exercice_path(exercice), class: "bg-blue-600 text-white rounded px-2 py-1 flex " do %>
+        <!-- SVG for Edit -->
+        <%= heroicon "pencil-square" %> Modifier
+      <% end %>
+                    
+      <%= link_to exercice_path(exercice), method: :delete, 
+        data: { confirm: "Êtes-vous sûr de vouloir supprimer ce résumé ?" },
+        class: "bg-red-600 text-white rounded px-2 py-1 flex" do %>
+        <%= heroicon "trash" %> Supprimer
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+<%# Render new Form %>
+  <%= turbo_frame_tag Resume.new %>
+    
+
+  
+  <%# list Material %>
+  <%= turbo_frame_tag "materials" do %>
+    <%= render @materials %>
+  <% end %>

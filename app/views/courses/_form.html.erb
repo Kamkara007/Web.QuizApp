@@ -1,0 +1,48 @@
+<%= form_with(model: course) do |form| %>
+  <% if course.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+        <% course.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="my-5">
+    <%= form.text_field :title,
+      class: "ln-text-field ln-text-field-focus",
+      placeholder:"Titre du contenu ...", autofocus: true %>
+  </div>
+
+  <div class="my-5 bg-white p-2">
+    <%= form.rich_text_area :content, 
+    class: "ln-text-field ln-text-field-focus rounded-md",
+    placeholder:"Ecrivez le contenu ..." %>
+  </div>
+
+ <!-- Items of course-->
+  
+ 
+  <div class="flex my-4">
+    <div class="w-1/2">
+      <%= form.label :"Niveau" %>
+      <%= form.select :level_id, @levels.map { |level| [level.title, level.id] }, class: "border-gray-200 px-3 py-2 mt-2" %>
+    </div>
+
+    <div class="w-1/2 mx-2">
+      <%= form.label :"Matiere" %>
+      <%= form.select :material_id, @materials.map { |material| [material.title, material.id] }, class: "block rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+  </div>
+
+  
+
+
+  <div class="flex" >
+    <%= form.submit "Enregistrez", class:"ln-btn ln-btn-create" %>
+    <%= link_to "Annuler",root_path, data:{turbo_frame: "_top"}, class:"ml-4 ln-btn ln-btn-alert bg-black " %>
+  </div>
+<% end %>

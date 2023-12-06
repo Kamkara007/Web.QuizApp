@@ -1,0 +1,30 @@
+<div class="flex justify-between text-xs md:text-sm ptl-2 p">
+    <div class="flex">
+        <p class="ml-4  text-sm"> <%= feed_course.essentials.count %> </p>
+    </div>
+    
+    <div class="flex text-md mr-10">
+        <p class=""> <%= feed_course.quizzes.count %> </p>
+    </div>
+</div> 
+
+<hr>
+<!--Course Features -->
+
+<div class="flex justify-between px-2">
+    
+    <!-- Exercise correction Count -->
+    <div class="flex py-1 text-sm ">
+        <%= link_to  "", data:{turbo_frame: "essentials"} do %>
+            <p class="flex">
+                <%= heroicon "book-open" %>
+                <span class="mx-2 ">Essentilles</span>
+            </p>  
+        <% end %>
+    </div>
+
+    <!-- Exercise correction Count -->
+    <div class="flex ml-2 py-1 text-sm md:text-md">
+        <p class="flex"><%= heroicon "document-text" %> <span class="mx-2">Exercices</span></p>
+    </div>
+</div>

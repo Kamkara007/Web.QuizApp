@@ -1,0 +1,70 @@
+<%= render "homepage/feeds/navbars/navbars" %>
+
+<div id="<%= dom_id course %>" class="pt-20">
+
+  <div class="mx-auto w-full md:w-2/3">
+    <div class="border rounded-md bg-white p-2">
+      <div class="flex justify-between space-x-3 p-2">
+        <div class="flex">
+          <%= avatar_user %>
+          <div>
+            <div class="font-bold flex ml-2">
+              <%= @course.team.full_name %>
+              <%= heroicon 'star', options: { class: "pl-6 text-blue-600" }  %>
+            </div>
+            <div class="text-sm opacity-50 ml-2">
+              Professeur de <%= link_to root_path do %> <%= @course.team.city_name %> <% end %>
+              <%#= @course.writer.school %>
+              <%= @course.team.city_name %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Options -->
+
+      </div>
+
+      <!-- course title -->
+      <h1 class="font-bold text-xl md:text-2xl mb-4"> <%= @course.title %> </h1>
+      <!-- course content -->
+      <div data-controller="read-more" data-read-more-more-text-value="voir plus" class="p-2 pb-4 text-md">
+        <div class="show-content" data-read-more-target="content" class="flex">
+          <%= @course.content %>
+        </div>
+        <button data-action="read-more#toggle" class="flex text-blue-500 underline">
+          Voir plus <%= heroicon "arrow-long-right", options:{class:"flex"} %>
+        </button>
+      </div>
+
+      <!-- add course Stats -->
+      <div class="flex justify-between text-xs md:text-sm ptl-2 p">
+        <div class="flex">
+          <p class="ml-4  text-sm"> <%= @course.essentials.count %> </p>
+        </div>
+
+        <div class="flex text-md mr-10">
+          <p class=""> <%#= @course.exercices.count %> </p>
+        </div>
+      </div>
+      <hr>
+      <!--Course Features -->
+
+      <div class="flex justify-between px-2">
+        <!-- Exercise correction Count -->
+        <div class="flex py-1 text-sm ">
+          <%= link_to  "", data:{turbo_frame: "essentials"} do %>
+          <p class="flex">
+            <%= heroicon "book-open" %>
+            <span class="mx-2 ">Essentielles</span>
+          </p>
+          <% end %>
+        </div>
+
+        <!-- Exercise correction Count -->
+        <div class="flex ml-2 py-1 text-sm md:text-md">
+          <p class="flex"><%= heroicon "document-text" %> <span class="mx-2">Exercices</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
